@@ -1,0 +1,46 @@
+---
+description: Testing guidelines — test structure, coverage, naming, and practices
+alwaysApply: true
+---
+
+# Testing
+
+## Structure
+
+- Follow **Arrange-Act-Assert** (AAA) pattern in every test.
+- One logical assertion per test. Test one behavior, not one function.
+- Name tests descriptively: `should [expected behavior] when [condition]`.
+- Group tests by feature/module, not by function name.
+
+## Test Pyramid
+
+- **Unit tests** (70%): fast, isolated, test single units of logic.
+- **Integration tests** (20%): test component interactions, database, APIs.
+- **E2E tests** (10%): test critical user flows end-to-end.
+
+## Best Practices
+
+- Tests must be deterministic — no flaky tests. Mock time, randomness, external services.
+- Keep tests independent — no shared mutable state between tests.
+- Test edge cases: empty inputs, null/undefined, boundary values, error paths.
+- Write tests before fixing bugs (regression tests).
+- Treat test code with the same quality standards as production code.
+
+## What to Test
+
+- Business logic and domain rules.
+- Input validation and error handling paths.
+- State transitions and side effects.
+- API contracts and response shapes.
+
+## What NOT to Test
+
+- Framework internals or third-party library behavior.
+- Private implementation details — test public interfaces.
+- Trivial getters/setters with no logic.
+
+## Mocking
+
+- Mock external dependencies (APIs, databases, file system), not internal logic.
+- Prefer fakes and stubs over complex mocking frameworks when possible.
+- Verify interactions only when the side effect IS the behavior being tested.

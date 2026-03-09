@@ -1,0 +1,37 @@
+---
+description: Clean code fundamentals — naming, functions, readability, simplicity
+alwaysApply: true
+---
+
+# Clean Code Fundamentals
+
+## Naming
+
+- Use descriptive, intention-revealing names. A reader should understand purpose without comments.
+- Booleans: prefix with `is`, `has`, `should`, `can` (e.g. `isVisible`, `hasPermission`).
+- Functions: use verb phrases (`fetchUser`, `calculateTotal`, `validateInput`).
+- Constants: `UPPER_SNAKE_CASE` for true compile-time constants only.
+- Avoid abbreviations, single-letter variables (except short lambdas/loops), and Hungarian notation.
+
+## Functions
+
+- Keep functions short — ideally under 20 lines, max 40.
+- One level of abstraction per function. Extract helpers instead of nesting.
+- Max 3 parameters. Use an options/config object beyond that.
+- Avoid boolean flag parameters — split into two functions instead.
+- Functions should either **do** something or **return** something, not both (Command-Query Separation).
+
+## Readability
+
+- Prefer early returns / guard clauses over deeply nested `if-else`.
+- Avoid magic numbers and strings — extract to named constants.
+- Keep line length under 100 characters.
+- Group related code with blank lines; separate concerns with clear section breaks.
+- Delete dead code — don't comment it out. Version control exists.
+
+## Simplicity
+
+- Write the simplest code that works. Refactor complexity only when needed.
+- Avoid premature abstraction — wait until you see the pattern three times (Rule of Three).
+- Prefer composition over inheritance.
+- Avoid clever one-liners that sacrifice clarity.

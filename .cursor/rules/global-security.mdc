@@ -1,0 +1,41 @@
+---
+description: Security best practices — input validation, secrets, auth, common vulnerabilities
+alwaysApply: true
+---
+
+# Security
+
+## Input Validation
+
+- Never trust user input. Validate and sanitize all external data at system boundaries.
+- Use allowlists over denylists for validation.
+- Parameterize all database queries — never concatenate user input into SQL.
+- Encode output contextually (HTML, URL, JS) to prevent XSS.
+
+## Secrets & Configuration
+
+- Never hardcode secrets, API keys, tokens, or credentials in source code.
+- Use environment variables or a secrets manager (Vault, AWS SSM, etc.).
+- Add `.env`, credential files, and key files to `.gitignore`.
+- Rotate secrets regularly. Design for easy rotation.
+
+## Authentication & Authorization
+
+- Hash passwords with bcrypt, scrypt, or argon2 — never MD5/SHA for passwords.
+- Implement proper session management with secure, httpOnly, sameSite cookies.
+- Apply least privilege: users/services get only the permissions they need.
+- Validate authorization on every request server-side, not just in the UI.
+
+## Common Vulnerabilities
+
+- **SQL Injection**: use parameterized queries / ORM.
+- **XSS**: escape/encode all rendered user input.
+- **CSRF**: use anti-CSRF tokens for state-changing operations.
+- **IDOR**: validate resource ownership on every access.
+- **Path Traversal**: validate and sanitize file paths.
+
+## Dependencies
+
+- Keep dependencies up to date. Run `npm audit` / `pip audit` / equivalent regularly.
+- Pin dependency versions in production. Use lockfiles.
+- Audit new dependencies before adding — check maintenance, popularity, known CVEs.

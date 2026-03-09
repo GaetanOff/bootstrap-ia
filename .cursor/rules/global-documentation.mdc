@@ -1,0 +1,36 @@
+---
+description: Code documentation — when and how to write useful comments and docs
+alwaysApply: true
+---
+
+# Documentation
+
+## Code Comments
+
+- Code should be self-documenting first. Use comments only for the **why**, not the **what**.
+- Never add comments that restate the code (`// increment counter` above `counter++`).
+- Document non-obvious business rules, workarounds, performance trade-offs, and constraints.
+- Use `TODO:`, `FIXME:`, `HACK:` prefixes for actionable items — include a ticket/name.
+- Keep comments up to date. Stale comments are worse than no comments.
+
+## Function/Method Documentation
+
+- Document public APIs and exported functions with:
+  - Brief description of purpose
+  - Parameter descriptions (types, constraints, defaults)
+  - Return value description
+  - Exceptions/errors that can be thrown
+- Skip docs for self-explanatory functions (`getName()`, `isValid()`).
+
+## Project Documentation
+
+- Every project needs a `README.md` with: purpose, setup, usage, architecture overview.
+- Document environment variables in a `.env.example` file.
+- Keep an `ARCHITECTURE.md` or equivalent for system-level design decisions.
+- Document API endpoints with OpenAPI/Swagger or equivalent.
+
+## ADRs (Architecture Decision Records)
+
+- Record significant technical decisions in short docs.
+- Format: Context → Decision → Consequences.
+- Store in `docs/adr/` or similar location.

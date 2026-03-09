@@ -1,0 +1,85 @@
+---
+description: Master workflow for AI-powered project generation — discovery, design, scaffold, implement, validate
+alwaysApply: true
+---
+
+# Bootstrap Workflow
+
+## Overview
+
+Follow this phased approach for every project. Never skip phases — each builds on the previous one.
+
+```
+Discovery → Architecture → Scaffolding → Implementation → Quality Gates → Iteration
+```
+
+## Phase 1: Discovery
+
+Before writing any code, deeply understand the project:
+
+- Ask clarifying questions about requirements, constraints, and priorities.
+- Identify the target users, core use cases, and expected scale.
+- List functional requirements (features) and non-functional requirements (performance, security, accessibility).
+- Identify constraints: budget, timeline, team size, existing infrastructure, compliance.
+- Define what "done" looks like — explicit acceptance criteria for each feature.
+
+## Phase 2: Architecture
+
+Design the system before building it:
+
+- Choose architecture pattern (monolith, microservices, serverless, modular monolith).
+- Define data model and relationships.
+- Design API contracts (REST, GraphQL, gRPC) with endpoint specs.
+- Plan state management strategy (client, server, cache layers).
+- Select tech stack based on requirements (see `core-tech-stack` rule).
+- Document decisions as ADRs (Architecture Decision Records).
+
+## Phase 3: Scaffolding
+
+Generate the project structure:
+
+- Create directory structure following feature-based organization.
+- Set up dependency management (package.json, pyproject.toml, go.mod, etc.).
+- Configure linter, formatter, and pre-commit hooks.
+- Set up testing framework and write first smoke test.
+- Create `.env.example` with all required environment variables.
+- Initialize git with a proper `.gitignore`.
+- Set up CI/CD pipeline (see `core-devops` rule).
+
+## Phase 4: Implementation
+
+Build feature by feature, not layer by layer:
+
+- Implement one complete vertical slice at a time (UI → API → DB).
+- Write tests alongside code — not after.
+- Commit after each meaningful, working increment.
+- Follow all global and technology-specific rules.
+- Handle errors, edge cases, and validation from the start.
+
+## Phase 5: Quality Gates
+
+Validate before delivering (see `core-quality-gates` rule):
+
+- All tests pass (unit, integration, E2E).
+- No linter errors or warnings.
+- Security checklist reviewed.
+- Performance within acceptable bounds.
+- Documentation is complete and accurate.
+- Accessibility meets WCAG AA minimum.
+
+## Phase 6: Iteration
+
+Refine based on feedback:
+
+- Review against original requirements and acceptance criteria.
+- Identify and address technical debt.
+- Optimize performance bottlenecks found during testing.
+- Improve UX based on usability review.
+- Update documentation to reflect final state.
+
+## Rules
+
+- Never start coding before completing Discovery and Architecture phases.
+- Always explain your reasoning when making architectural decisions.
+- Present trade-offs explicitly — never make silent assumptions.
+- When in doubt, ask. A wrong assumption is costlier than a question.

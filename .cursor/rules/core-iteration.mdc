@@ -1,0 +1,74 @@
+---
+description: Iterative refinement — feedback loops, refactoring, continuous improvement
+alwaysApply: true
+---
+
+# Iteration & Refinement
+
+## Feedback Loop
+
+After each implementation cycle:
+
+1. **Review**: Compare output against requirements and acceptance criteria.
+2. **Identify gaps**: What's missing, incorrect, or suboptimal?
+3. **Prioritize**: Fix blockers first, then improvements, then polish.
+4. **Implement**: Make targeted changes with minimal disruption.
+5. **Validate**: Re-run quality gates to confirm the fix didn't break anything.
+
+## Refactoring Triggers
+
+Refactor when you see:
+- **Duplication**: same logic in 3+ places → extract to shared function/module.
+- **Long functions**: >40 lines or multiple levels of abstraction → split.
+- **Large files**: >300 lines → break into focused modules.
+- **Tangled dependencies**: circular imports or god objects → restructure boundaries.
+- **Naming confusion**: names that don't reflect current purpose → rename.
+- **Test fragility**: tests breaking from unrelated changes → improve isolation.
+
+## Refactoring Rules
+
+- Refactor in dedicated commits — never mix refactoring with feature changes.
+- Run all tests before and after refactoring. Green → refactor → green.
+- Make small, incremental changes. Don't rewrite entire modules at once.
+- Keep the system working at every step — no "temporary breakage."
+- Update documentation and tests alongside the refactored code.
+
+## Performance Optimization Cycle
+
+1. **Profile**: identify the actual bottleneck with tools (profiler, network tab, slow query log).
+2. **Measure**: establish a baseline metric (response time, FPS, memory usage).
+3. **Hypothesize**: propose a specific change to improve the metric.
+4. **Implement**: make the change.
+5. **Measure again**: compare against baseline. If no improvement, revert.
+6. **Document**: record what was optimized and the impact.
+
+## Technical Debt Management
+
+- Track technical debt explicitly (code comments, issue tracker, ADRs).
+- Allocate time for debt reduction in each iteration — it compounds fast.
+- Prioritize debt that blocks new features or causes bugs.
+- Distinguish between intentional debt (trade-off) and accidental debt (mistakes).
+
+## UX Refinement
+
+- Review the UI with fresh eyes after implementing features.
+- Check consistency: spacing, colors, typography, interaction patterns.
+- Verify responsive behavior across breakpoints.
+- Test with keyboard-only navigation.
+- Simplify flows — every extra click or field is friction.
+
+## Documentation Updates
+
+After each iteration:
+- Update README if setup or usage changed.
+- Update API docs if endpoints changed.
+- Update ARCHITECTURE.md if system design evolved.
+- Update changelog with notable changes.
+- Remove outdated documentation — stale docs mislead.
+
+## Continuous Improvement Mindset
+
+- After completing a project, conduct a retrospective: what worked, what didn't.
+- Capture reusable patterns and templates for future projects.
+- Update bootstrap rules based on lessons learned.
+- Share knowledge — document non-obvious solutions and trade-offs.

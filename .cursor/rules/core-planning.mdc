@@ -1,0 +1,67 @@
+---
+description: Project planning — requirements analysis, scoping, estimation, and acceptance criteria
+alwaysApply: true
+---
+
+# Project Planning
+
+## Requirements Analysis
+
+- Decompose the project into epics → features → user stories → tasks.
+- For each feature, define: input, behavior, output, edge cases.
+- Distinguish between must-have (MVP), should-have, and nice-to-have features.
+- Identify external dependencies: APIs, services, data sources, third-party libraries.
+- Map out the user journey for each core use case.
+
+## Scoping
+
+- Define MVP scope explicitly. Cut ruthlessly — ship less, ship better.
+- Identify risks and unknowns early. Prototype the riskiest parts first.
+- List assumptions and validate them before building on top of them.
+- Estimate relative complexity for each feature (S/M/L/XL).
+- Plan for incremental delivery — each increment should be a usable, testable milestone.
+
+## Acceptance Criteria
+
+Write acceptance criteria using the Given-When-Then format:
+
+```
+Given [precondition]
+When [action]
+Then [expected outcome]
+```
+
+Every feature needs:
+- Happy path criteria (normal flow).
+- Error path criteria (invalid input, failures, edge cases).
+- Performance criteria (response time, throughput) when relevant.
+- Security criteria (access control, data protection) when relevant.
+
+## Task Breakdown
+
+For each feature, create a vertical implementation plan:
+
+1. **Data layer**: models, schema, migrations.
+2. **Business logic**: services, use cases, validation.
+3. **API/Interface**: endpoints, controllers, handlers.
+4. **UI** (if applicable): components, pages, routing.
+5. **Tests**: unit, integration, E2E for the feature.
+6. **Documentation**: API docs, usage examples, configuration.
+
+## Prioritization
+
+- Start with foundational features (auth, data model, core entities).
+- Build features that unblock other features first.
+- Defer optimization, polish, and advanced features until core flows work.
+- Allocate time for integration, testing, and deployment — not just coding.
+
+## Constraints Checklist
+
+Before starting, clarify:
+- [ ] Target platforms and browsers.
+- [ ] Performance requirements (latency, throughput, concurrent users).
+- [ ] Security and compliance requirements (GDPR, HIPAA, SOC2).
+- [ ] Accessibility standards (WCAG level).
+- [ ] Internationalization / localization needs.
+- [ ] Deployment environment (cloud provider, containers, serverless).
+- [ ] Budget constraints for infrastructure and third-party services.

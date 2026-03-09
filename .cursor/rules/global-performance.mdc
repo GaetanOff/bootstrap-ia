@@ -1,0 +1,42 @@
+---
+description: Performance best practices — avoid common bottlenecks, optimize wisely
+alwaysApply: true
+---
+
+# Performance
+
+## Principles
+
+- **Measure first, optimize second.** Never optimize without profiling.
+- Optimize for the common case, not the edge case.
+- Algorithmic improvements beat micro-optimizations. Prefer O(n) over O(n²).
+- Set performance budgets and monitor them in CI.
+
+## Common Bottlenecks
+
+- **N+1 queries**: batch database calls, use eager loading / joins.
+- **Unnecessary re-renders**: in UI frameworks, memoize and avoid prop drilling.
+- **Blocking the main thread**: offload heavy computation to workers/background jobs.
+- **Large payloads**: paginate lists, compress responses, use streaming for large data.
+- **Missing indexes**: add database indexes for frequently queried columns.
+
+## Caching
+
+- Cache expensive computations and repeated external calls.
+- Use appropriate cache invalidation strategies (TTL, event-based, versioned keys).
+- Cache at the right layer: in-memory, CDN, reverse proxy, application, database.
+- Never cache sensitive or user-specific data without proper scoping.
+
+## Async & Concurrency
+
+- Use async/non-blocking I/O for network and file operations.
+- Run independent operations in parallel, not sequentially.
+- Use connection pooling for databases and HTTP clients.
+- Apply rate limiting and circuit breakers for external services.
+
+## Assets & Payloads
+
+- Minify and compress static assets (JS, CSS, images).
+- Lazy-load non-critical resources.
+- Use appropriate image formats and sizes.
+- Implement pagination for list endpoints.

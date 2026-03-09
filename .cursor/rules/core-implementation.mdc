@@ -1,0 +1,92 @@
+---
+description: Implementation strategies — vertical slices, incremental delivery, coding patterns
+alwaysApply: true
+---
+
+# Implementation Strategy
+
+## Vertical Slices
+
+Build features as complete vertical slices through all layers:
+
+```
+❌ Horizontal (layer by layer):        ✅ Vertical (feature by feature):
+1. Build all models                     1. Auth: model → service → API → UI → tests
+2. Build all services                   2. Users: model → service → API → UI → tests
+3. Build all controllers                3. Orders: model → service → API → UI → tests
+4. Build all UI components              4. Dashboard: model → service → API → UI → tests
+5. Write all tests
+```
+
+Each slice delivers a working, testable increment.
+
+## Implementation Order
+
+1. **Foundation**: project setup, configuration, database connection, logging.
+2. **Authentication**: auth is usually a dependency for everything else.
+3. **Core entities**: the primary domain objects and their CRUD operations.
+4. **Business logic**: the rules and workflows that make the app valuable.
+5. **UI/UX**: the user-facing interface built on top of working APIs.
+6. **Polish**: error messages, loading states, empty states, edge cases.
+7. **Advanced features**: search, notifications, analytics, integrations.
+
+## Coding Patterns
+
+### Start Simple, Evolve
+
+- Begin with the simplest implementation that satisfies the requirement.
+- Add abstraction only when complexity demands it (Rule of Three).
+- Refactor continuously as patterns emerge — don't wait for a "refactoring sprint."
+
+### Error-First Development
+
+- Implement the error/edge cases alongside the happy path, not after.
+- For every input, consider: empty, null, too large, malformed, unauthorized.
+- For every external call, handle: timeout, network error, unexpected response, rate limit.
+
+### Test-Driven When Appropriate
+
+- Use TDD for complex business logic and algorithms.
+- Write the test first when fixing a bug (regression test).
+- For UI components, write tests after implementation but before PR.
+- For integration points, write contract tests to catch breaking changes.
+
+## Incremental Delivery
+
+### Working Software at Every Step
+
+- Every commit should leave the project in a working state.
+- Use feature flags to merge incomplete features without exposing them.
+- Deploy to a staging environment frequently — not just at the end.
+
+### Progressive Enhancement
+
+- Build the core functionality first with minimal UI.
+- Add interactivity, animations, and polish incrementally.
+- Optimize only after profiling shows a real bottleneck.
+
+## Common Anti-Patterns
+
+- **Big Bang Integration**: building all layers independently then "wiring them up" at the end.
+- **Gold Plating**: over-engineering features beyond what was requested.
+- **Copy-Paste Development**: duplicating code instead of extracting shared abstractions.
+- **Premature Optimization**: optimizing code that isn't a measured bottleneck.
+- **Ignoring Errors**: implementing only the happy path and adding error handling "later."
+
+## Code Organization Within Features
+
+```
+features/users/
+  components/       # UI components specific to this feature
+  hooks/            # Custom hooks for this feature
+  services/         # Business logic and API calls
+  types.ts          # Types and interfaces
+  schema.ts         # Validation schemas (Zod, Yup, etc.)
+  constants.ts      # Feature-specific constants
+  index.ts          # Public API of the feature module
+  __tests__/        # Tests for this feature
+```
+
+- Keep feature modules self-contained. Minimize cross-feature imports.
+- Shared code goes in `shared/` — never duplicate between features.
+- Export only the public API through `index.ts`.

@@ -1,0 +1,132 @@
+---
+description: Project scaffolding — directory structure, tooling setup, initial configuration
+alwaysApply: true
+---
+
+# Project Scaffolding
+
+## Directory Structure
+
+Generate a feature-based structure adapted to the tech stack:
+
+### Web App (React/Next.js/Vue)
+
+```
+src/
+  app/                    # Routes and pages
+  features/               # Feature modules
+    auth/
+      components/
+      hooks/
+      services/
+      types.ts
+      index.ts
+    dashboard/
+      ...
+  shared/
+    components/           # Reusable UI components
+    hooks/                # Shared hooks
+    lib/                  # Utility functions
+    types/                # Shared types
+  infrastructure/
+    api/                  # API client
+    config/               # App configuration
+    providers/            # Context providers
+public/                   # Static assets
+tests/                    # E2E tests
+```
+
+### Backend API (Node.js/Python/Go)
+
+```
+src/
+  features/               # Feature modules
+    users/
+      controller.ts
+      service.ts
+      repository.ts
+      schema.ts
+      routes.ts
+      __tests__/
+    orders/
+      ...
+  shared/
+    middleware/            # Express/Fastify middleware
+    errors/               # Custom error classes
+    utils/                # Utility functions
+    types/                # Shared types
+  infrastructure/
+    database/             # DB connection, migrations
+    cache/                # Cache layer
+    config/               # Environment config
+    logger/               # Structured logging
+```
+
+### Fullstack (Monorepo)
+
+```
+apps/
+  web/                    # Frontend app
+  api/                    # Backend app
+  mobile/                 # Mobile app (optional)
+packages/
+  shared/                 # Shared types, utils, constants
+  ui/                     # Shared component library
+  config/                 # Shared configurations
+```
+
+## Tooling Setup Checklist
+
+For every project, set up:
+
+- [ ] **Package manager**: npm/pnpm/yarn (JS), uv/poetry (Python), go mod (Go).
+- [ ] **Linter**: ESLint (JS/TS), Ruff (Python), golangci-lint (Go), clippy (Rust).
+- [ ] **Formatter**: Prettier (JS/TS), Black/Ruff (Python), gofmt (Go), rustfmt (Rust).
+- [ ] **Type checker**: TypeScript strict mode, mypy/pyright (Python).
+- [ ] **Test runner**: Vitest/Jest (JS), pytest (Python), go test (Go), cargo test (Rust).
+- [ ] **Git hooks**: Husky + lint-staged (JS), pre-commit (Python).
+- [ ] **Environment**: `.env.example` with all variables documented.
+- [ ] **Editor config**: `.editorconfig` for consistent formatting across editors.
+
+## Configuration Files
+
+Generate appropriate config files for the chosen stack:
+
+### JavaScript/TypeScript
+- `package.json` with scripts: dev, build, test, lint, format.
+- `tsconfig.json` with strict mode enabled.
+- `.eslintrc` or `eslint.config.js` with recommended rules.
+- `.prettierrc` with consistent settings.
+
+### Python
+- `pyproject.toml` with all tool configuration.
+- `requirements.txt` or `uv.lock` for pinned dependencies.
+
+### Go
+- `go.mod` with module path.
+- `Makefile` with build, test, lint targets.
+
+### Rust
+- `Cargo.toml` with workspace configuration.
+- `clippy.toml` for custom lint rules.
+
+## Initial Files
+
+Create these files at project setup:
+- `README.md` — project purpose, setup instructions, architecture overview.
+- `.gitignore` — stack-appropriate ignore patterns.
+- `.env.example` — all environment variables with descriptions.
+- `Dockerfile` — if containerization is needed.
+- `docker-compose.yml` — for local development with services (DB, cache, etc.).
+- `ARCHITECTURE.md` — high-level system design and decisions.
+
+## First Commit Checklist
+
+The first commit should include:
+- [ ] Project structure created.
+- [ ] All configuration files in place.
+- [ ] Dependencies installed and lockfile committed.
+- [ ] Linter and formatter running without errors.
+- [ ] At least one smoke test passing.
+- [ ] README with setup instructions.
+- [ ] CI pipeline configuration.

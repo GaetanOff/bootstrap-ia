@@ -1,0 +1,79 @@
+---
+description: Architecture decision framework — patterns, data modeling, API design, system design
+alwaysApply: true
+---
+
+# Architecture
+
+## Decision Framework
+
+For every architectural decision, document:
+
+1. **Context**: What is the problem? What are the constraints?
+2. **Options**: What are the viable approaches? (minimum 2)
+3. **Trade-offs**: Pros and cons of each option.
+4. **Decision**: Which option and why.
+5. **Consequences**: What changes as a result? What are the risks?
+
+## Architecture Patterns
+
+Choose based on project requirements:
+
+| Pattern | When to Use |
+|---------|-------------|
+| **Monolith** | Small team, single product, fast iteration, MVP |
+| **Modular Monolith** | Growing product, need boundaries, not ready for distributed |
+| **Microservices** | Large teams, independent deployment, different scaling needs |
+| **Serverless** | Event-driven, unpredictable traffic, low ops budget |
+| **Jamstack** | Content-heavy sites, static + dynamic hybrid |
+| **Event-Driven** | Async workflows, decoupled systems, real-time |
+
+## Data Modeling
+
+- Start with the domain model. Identify entities, relationships, and invariants.
+- Normalize for writes, denormalize for reads (when performance requires it).
+- Choose the right database for the workload:
+  - **Relational** (PostgreSQL, MySQL): structured data, complex queries, ACID.
+  - **Document** (MongoDB, Firestore): flexible schema, nested data, rapid prototyping.
+  - **Key-Value** (Redis, DynamoDB): caching, sessions, high-throughput lookups.
+  - **Graph** (Neo4j): complex relationships, social networks, recommendations.
+- Plan for data migrations from day one. Schema changes are inevitable.
+
+## API Design
+
+- Define API contracts before implementation. Use OpenAPI/Swagger for REST, GraphQL schema for GraphQL.
+- Design resource-oriented APIs. Follow REST conventions (see `specific-api-rest` rule).
+- Plan for versioning from the start (`/api/v1/`).
+- Design for backward compatibility — additive changes only.
+- Include pagination, filtering, and sorting in list endpoints.
+
+## State Management
+
+- Identify what state lives where: server (DB, cache), client (memory, storage), URL (params, hash).
+- Minimize client-side state. Derive what you can from server state.
+- Use optimistic updates for responsive UIs with server reconciliation.
+- Plan cache invalidation strategy for every cached resource.
+
+## Security Architecture
+
+- Define authentication strategy: session-based, JWT, OAuth2, API keys.
+- Design authorization model: RBAC, ABAC, or resource-based.
+- Identify trust boundaries. Validate at every boundary crossing.
+- Plan for secrets management, encryption at rest, encryption in transit.
+
+## Scalability Considerations
+
+- Design for horizontal scaling unless the project is explicitly small-scale.
+- Identify potential bottlenecks: database, network, compute, storage.
+- Use stateless services where possible (easier to scale).
+- Plan caching layers: CDN → reverse proxy → application → database.
+- Consider async processing for heavy/slow operations (queues, background jobs).
+
+## Cross-Cutting Concerns
+
+Plan these upfront — they're harder to retrofit:
+- Logging and observability (structured logs, metrics, tracing).
+- Error handling strategy (error codes, retry policies, circuit breakers).
+- Configuration management (env vars, feature flags, secrets).
+- Health checks and readiness probes.
+- Rate limiting and throttling.

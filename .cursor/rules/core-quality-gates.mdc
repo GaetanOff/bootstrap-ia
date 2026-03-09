@@ -1,0 +1,81 @@
+---
+description: Quality gates — validation checkpoints at every phase of development
+alwaysApply: true
+---
+
+# Quality Gates
+
+## Pre-Implementation Gate
+
+Before writing code for a feature, verify:
+
+- [ ] Requirements and acceptance criteria are clear and complete.
+- [ ] Architecture decisions are documented.
+- [ ] Data model and API contracts are defined.
+- [ ] Dependencies and blockers are identified.
+- [ ] The feature can be implemented as a vertical slice.
+
+## Per-Feature Gate
+
+After implementing each feature, validate:
+
+### Functionality
+- [ ] All acceptance criteria are met (happy path + error paths).
+- [ ] Edge cases are handled (empty, null, boundary values, concurrent access).
+- [ ] Error messages are user-friendly and actionable.
+- [ ] Loading, empty, and error states are implemented in UI.
+
+### Code Quality
+- [ ] Code follows all applicable global and tech-specific rules.
+- [ ] No linter errors or warnings.
+- [ ] No hardcoded values that should be configurable.
+- [ ] No `TODO` or `FIXME` left without a tracking ticket.
+- [ ] Dead code is removed. No commented-out blocks.
+
+### Testing
+- [ ] Unit tests cover business logic and edge cases.
+- [ ] Integration tests verify component interactions.
+- [ ] Tests are deterministic and isolated.
+- [ ] Test names describe behavior, not implementation.
+- [ ] Code coverage meets project threshold (aim for 80%+ on business logic).
+
+### Security
+- [ ] User input is validated and sanitized.
+- [ ] Authentication and authorization are enforced.
+- [ ] No secrets in code or configuration files.
+- [ ] SQL injection, XSS, CSRF protections in place.
+- [ ] Sensitive data is encrypted at rest and in transit.
+
+### Performance
+- [ ] No N+1 queries. Database queries are optimized.
+- [ ] API responses are paginated for list endpoints.
+- [ ] Assets are optimized (images, bundles, lazy loading).
+- [ ] No memory leaks (cleanup in effects, unsubscribe, close connections).
+
+### Accessibility (UI)
+- [ ] Semantic HTML is used correctly.
+- [ ] Interactive elements are keyboard-navigable.
+- [ ] Color contrast meets WCAG AA (4.5:1 minimum).
+- [ ] Screen reader labels are present on all interactive elements.
+- [ ] Focus management is correct for modals and dynamic content.
+
+## Pre-Release Gate
+
+Before deploying to production:
+
+- [ ] All feature gates pass.
+- [ ] E2E tests pass on critical user flows.
+- [ ] Performance benchmarks are within acceptable bounds.
+- [ ] Security audit checklist is complete.
+- [ ] Documentation is up to date (README, API docs, changelog).
+- [ ] Environment variables and secrets are configured for production.
+- [ ] Rollback plan is documented and tested.
+- [ ] Monitoring and alerting are configured.
+
+## Continuous Quality
+
+- Run linter and formatter on every commit (pre-commit hooks).
+- Run unit tests on every push (CI pipeline).
+- Run integration tests on every PR.
+- Run E2E tests before every deployment.
+- Review dependency vulnerabilities weekly.

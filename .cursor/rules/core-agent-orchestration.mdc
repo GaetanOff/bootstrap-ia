@@ -1,0 +1,109 @@
+---
+description: AI agent orchestration — multi-agent patterns, context management, prompt strategies for Cursor
+alwaysApply: true
+---
+
+# Agent Orchestration
+
+## Context Management
+
+- Start every session by reading project README, architecture docs, and relevant rules.
+- Reference specific files and symbols with `@` mentions to ground the AI in real code.
+- Break large tasks into focused conversations — one concern per chat when possible.
+- Use the Notepad feature to maintain a living project brief across sessions.
+
+## Effective Prompting Patterns
+
+### Be Specific and Structured
+
+```
+❌ "Add authentication"
+
+✅ "Implement JWT authentication:
+   - POST /api/auth/login (email + password → JWT token)
+   - POST /api/auth/register (email + password + name → user + JWT)
+   - Middleware to verify JWT on protected routes
+   - Use bcrypt for password hashing
+   - Use Zod for input validation
+   - Store users in PostgreSQL via Prisma
+   - Include unit tests for auth service"
+```
+
+### Provide Context
+
+- Mention the tech stack, framework versions, and patterns in use.
+- Reference existing code that the new code should integrate with.
+- Specify constraints: "must be backward compatible", "no new dependencies", etc.
+- Mention code conventions: "follow existing patterns in `src/features/users/`".
+
+### Multi-Step Approach
+
+For complex features, break the work into sequential prompts:
+
+1. "Design the data model for [feature]. Show me the schema before implementing."
+2. "Implement the service layer with business logic and validation."
+3. "Create the API endpoints. Follow the patterns in `src/features/users/routes.ts`."
+4. "Build the UI components. Use our shared components from `src/shared/components/`."
+5. "Write tests: unit tests for the service, integration tests for the API."
+
+## Agent Capabilities
+
+### Use Agents for Parallel Work
+
+- Launch explore agents to understand unfamiliar codebases.
+- Use shell agents for build, test, and deployment commands.
+- Run multiple independent agents in parallel for faster exploration.
+
+### Leverage File References
+
+- Use `@file` to attach specific files as context.
+- Use `@folder` to reference entire directories.
+- Use `@codebase` for broad questions about the project.
+- Be selective — too much context dilutes focus.
+
+## Quality Control with AI
+
+### Self-Review Protocol
+
+After the AI generates code, request:
+1. "Review this code for security vulnerabilities."
+2. "Check for edge cases I might have missed."
+3. "Are there any performance concerns with this approach?"
+4. "Does this follow our project conventions?"
+
+### Iterative Refinement
+
+- Don't accept the first output — review, then ask for specific improvements.
+- Use "diff mode" to see exactly what changed.
+- Ask the AI to explain its decisions: "Why did you choose X over Y?"
+- If the output is wrong, provide specific feedback: "This is incorrect because..."
+
+## Session Management
+
+### Starting a New Feature
+
+1. Outline the feature requirements in the chat.
+2. Reference architecture docs and existing patterns.
+3. Ask the AI to propose an implementation plan before coding.
+4. Review the plan, then proceed step by step.
+
+### Resuming Work
+
+1. Summarize the current state: what's done, what's in progress, what's next.
+2. Reference the specific files being worked on.
+3. Mention any decisions made in previous sessions.
+
+### Debugging with AI
+
+1. Share the error message and stack trace.
+2. Reference the specific file and line.
+3. Describe what you expected vs. what happened.
+4. Share relevant logs or test output.
+
+## Anti-Patterns
+
+- **Vague prompts**: "Make it better" → AI doesn't know what "better" means.
+- **Too much at once**: asking for an entire application in one prompt → quality drops.
+- **No context**: not telling the AI about existing patterns → inconsistent code.
+- **Blind acceptance**: not reviewing generated code → bugs and security issues.
+- **Ignoring warnings**: dismissing AI concerns about trade-offs or risks.

@@ -1,0 +1,56 @@
+---
+description: Error handling best practices — fail fast, meaningful errors, graceful recovery
+alwaysApply: true
+---
+
+# Error Handling
+
+## Principles
+
+- Fail fast: validate inputs at boundaries, reject bad data early.
+- Never swallow errors silently — always log or propagate.
+- Use specific error types/classes, not generic `Error` or `Exception`.
+- Include contextual information in error messages (what failed, with what input, why).
+
+## Patterns
+
+- Use guard clauses to validate preconditions at function entry.
+- Catch errors at the appropriate level — don't catch what you can't handle.
+- Always clean up resources in `finally` blocks or equivalent (dispose, close, unlock).
+- Distinguish between recoverable errors (retry, fallback) and fatal errors (crash, alert).
+
+## Anti-Patterns to Avoid
+
+```
+// ❌ Silent catch
+try { riskyOp(); } catch (e) {}
+
+// ❌ Generic message
+throw new Error("Something went wrong");
+
+// ❌ Catching too broadly
+try { entireBusinessLogic(); } catch (e) { log(e); }
+```
+
+## Best Practices
+
+```
+// ✅ Specific, contextual error
+throw new ValidationError(`Invalid email format: "${email}"`);
+
+// ✅ Catch at the right level, re-throw with context
+try {
+  await db.query(sql);
+} catch (e) {
+  throw new DatabaseError(`Failed to execute query: ${sql}`, { cause: e });
+}
+
+// ✅ Guard clause
+if (!userId) throw new ArgumentError("userId is required");
+```
+
+## Logging
+
+- Log at the correct severity: `debug` for flow, `info` for events, `warn` for recoverable, `error` for failures.
+- Include correlation/request IDs for traceability.
+- Never log sensitive data (passwords, tokens, PII).
