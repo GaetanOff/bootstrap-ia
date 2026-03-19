@@ -154,6 +154,7 @@ Here's how Bootstrap IA transforms a typical conversation:
 > 6. **Iteration**: Refines based on review.
 
 <img src="https://cdn.gaetandev.fr/gaetan/bootstrap-ia/cursor-1.png" alt="Workflow Example" />
+<img src="https://cdn.gaetandev.fr/gaetan/bootstrap-ia/cursor-2.png" alt="Workflow Example" />
 
 ## Customization
 
