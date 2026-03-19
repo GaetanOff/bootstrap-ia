@@ -153,6 +153,8 @@ Here's how Bootstrap IA transforms a typical conversation:
 > 5. **Quality gates**: Validates security, performance, accessibility.
 > 6. **Iteration**: Refines based on review.
 
+<img src="https://cdn.gaetandev.fr/gaetan/bootstrap-ia/cursor-1.png" alt="Workflow Example" />
+
 ## Customization
 
 Each `.mdc` rule file has YAML frontmatter you can modify:
