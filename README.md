@@ -215,9 +215,9 @@ Open an issue or submit a pull request!
 
 ## 📬 Contact
 
-📧 contact@gaetandev.fr
-🌍 [Website](https://gaetandev.fr)
-💬 Discord: GaetanDev
+📧 contact@gaetandev.fr  
+🌍 [Website](https://gaetandev.fr)  
+💬 Discord: GaetanDev  
 
 ## 🎉 Thank you for using Bootstrap IA!
 
