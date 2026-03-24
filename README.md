@@ -1,23 +1,18 @@
-# Bootstrap IA — Advanced AI-Powered Project Generation for Cursor
+# Bootstrap IA 🚀
 
-A comprehensive ruleset and workflow system that transforms Cursor into an advanced project generation and development engine. Bootstrap IA goes beyond coding standards — it provides a complete methodology for AI-assisted software engineering.
+🛠️ **A comprehensive AI ruleset that transforms Cursor into an advanced project generation and development engine.**
 
-## What is Bootstrap IA?
+## 📌 Features
 
-Bootstrap IA combines three layers of intelligence:
+✅ Structured methodology for AI-driven project creation (discovery → architecture → scaffolding → implementation → quality gates → iteration)
+✅ Universal coding standards that apply to every project regardless of tech stack
+✅ Best practices for 18+ programming languages and frameworks
+✅ Plans before coding (architecture, data model, API contracts)
+✅ Scaffolds projects with proper structure, tooling, and configuration
+✅ Implements features as vertical slices with tests
+✅ Validates quality at every step (security, performance, accessibility)
 
-1. **Core Workflow Rules** — A structured methodology for AI-driven project creation (discovery → architecture → scaffolding → implementation → quality gates → iteration).
-2. **Global Quality Rules** — Universal coding standards that apply to every project regardless of tech stack.
-3. **Technology-Specific Rules** — Best practices for 18+ programming languages and frameworks.
-
-When you drop these rules into a project, Cursor becomes a senior engineer that:
-- Plans before coding (architecture, data model, API contracts).
-- Scaffolds projects with proper structure, tooling, and configuration.
-- Implements features as vertical slices with tests.
-- Validates quality at every step (security, performance, accessibility).
-- Iterates and refines based on feedback.
-
-## Compatibility
+## 🔌 Compatibility
 
 | Tool | File | Format |
 |------|------|--------|
@@ -25,7 +20,62 @@ When you drop these rules into a project, Cursor becomes a senior engineer that:
 | **Claude Code** | `CLAUDE.md` | Markdown (project root) |
 | **OpenCode / Agents** | `AGENTS.md` | Markdown (project root) |
 
-## Rules Overview
+## 📦 Installation
+
+### 1️⃣ Clone the project
+
+```bash
+git clone https://github.com/GaetanOff/bootstrap-ia.git
+cd bootstrap-ia
+```
+
+### 2️⃣ Copy to your project — Full Bootstrap
+
+```bash
+# Copy all rules to your project
+cp -r bootstrap-IA/.cursor/ /path/to/your-project/.cursor/
+
+# Copy agent entrypoints
+cp bootstrap-IA/AGENTS.md /path/to/your-project/
+cp bootstrap-IA/CLAUDE.md /path/to/your-project/
+```
+
+### 3️⃣ Cherry-Picking Rules
+
+Copy only the rules you need:
+
+```bash
+# Core workflow rules only (AI project generation)
+cp bootstrap-IA/.cursor/rules/core-*.mdc /path/to/your-project/.cursor/rules/
+
+# Global quality rules only
+cp bootstrap-IA/.cursor/rules/global-*.mdc /path/to/your-project/.cursor/rules/
+
+# Specific tech rules (pick what you need)
+cp bootstrap-IA/.cursor/rules/specific-typescript.mdc /path/to/your-project/.cursor/rules/
+cp bootstrap-IA/.cursor/rules/specific-react.mdc /path/to/your-project/.cursor/rules/
+cp bootstrap-IA/.cursor/rules/specific-nextjs.mdc /path/to/your-project/.cursor/rules/
+```
+
+## ⚙️ Configuration
+
+Each `.mdc` rule file has YAML frontmatter you can modify:
+
+```yaml
+---
+description: What this rule does
+globs: "**/*.ts"       # File pattern (specific rules only)
+alwaysApply: false     # Set to true to always apply
+---
+```
+
+### Adjusting the Workflow
+
+- **Lighter workflow**: Remove `core-devops.mdc` and `core-quality-gates.mdc` for smaller projects.
+- **Backend only**: Remove `core-ux-design.mdc` and frontend-specific rules.
+- **Different stack**: Edit `core-tech-stack.mdc` with your preferred technologies.
+
+## 📜 Rules Overview
 
 ### Core Rules (AI Workflow & Project Generation)
 
@@ -87,57 +137,24 @@ Activated automatically when working with matching file types.
 | `specific-api-rest` | `**/api/**, **/routes/**` | URL design, HTTP methods, response format |
 | `specific-markdown` | `**/*.md` | Markdown layout, headings, links |
 
-## Usage
+## 🚀 Usage
 
-### Quick Start — Full Bootstrap
-
-Copy the entire ruleset into your project:
-
-```bash
-# Clone the repo
-git clone https://github.com/YOUR_USERNAME/bootstrap-IA.git
-
-# Copy all rules to your project
-cp -r bootstrap-IA/.cursor/ /path/to/your-project/.cursor/
-
-# Copy agent entrypoints
-cp bootstrap-IA/AGENTS.md /path/to/your-project/
-cp bootstrap-IA/CLAUDE.md /path/to/your-project/
-```
-
-### Cherry-Picking Rules
-
-Copy only the rules you need:
-
-```bash
-# Core workflow rules only (AI project generation)
-cp bootstrap-IA/.cursor/rules/core-*.mdc /path/to/your-project/.cursor/rules/
-
-# Global quality rules only
-cp bootstrap-IA/.cursor/rules/global-*.mdc /path/to/your-project/.cursor/rules/
-
-# Specific tech rules (pick what you need)
-cp bootstrap-IA/.cursor/rules/specific-typescript.mdc /path/to/your-project/.cursor/rules/
-cp bootstrap-IA/.cursor/rules/specific-react.mdc /path/to/your-project/.cursor/rules/
-cp bootstrap-IA/.cursor/rules/specific-nextjs.mdc /path/to/your-project/.cursor/rules/
-```
-
-### Using with Cursor
+### 1️⃣ Using with Cursor
 
 1. Copy the rules into your project's `.cursor/rules/` directory.
 2. Open the project in Cursor.
 3. Start a conversation — the AI will automatically follow the workflow.
 4. For new projects, begin with: *"I want to build [description]. Let's start with discovery and planning."*
 
-### Using with Claude Code
+### 2️⃣ Using with Claude Code
 
 Place `CLAUDE.md` at your project root. Claude Code reads it automatically.
 
-### Using with OpenCode / Other Agents
+### 3️⃣ Using with OpenCode / Other Agents
 
 Place `AGENTS.md` at your project root.
 
-## Workflow Example
+## 💡 Workflow Example
 
 Here's how Bootstrap IA transforms a typical conversation:
 
@@ -156,52 +173,52 @@ Here's how Bootstrap IA transforms a typical conversation:
 <img src="https://cdn.gaetandev.fr/gaetan/bootstrap-ia/cursor-1.png" alt="Workflow Example" />
 <img src="https://cdn.gaetandev.fr/gaetan/bootstrap-ia/cursor-2.png" alt="Workflow Example" />
 
-## Customization
-
-Each `.mdc` rule file has YAML frontmatter you can modify:
-
-```yaml
----
-description: What this rule does
-globs: "**/*.ts"       # File pattern (specific rules only)
-alwaysApply: false     # Set to true to always apply
----
-```
-
-### Adjusting the Workflow
-
-- **Lighter workflow**: Remove `core-devops.mdc` and `core-quality-gates.mdc` for smaller projects.
-- **Backend only**: Remove `core-ux-design.mdc` and frontend-specific rules.
-- **Different stack**: Edit `core-tech-stack.mdc` with your preferred technologies.
-
-## File Structure
+## 📂 Project structure
 
 ```
 bootstrap-IA/
-├── README.md                    # This file
-├── AGENTS.md                    # Entrypoint for OpenCode / agents
-├── CLAUDE.md                    # Entrypoint for Claude Code
+├── README.md                    # 📖 Documentation
+├── AGENTS.md                    # 🤖 Entrypoint for OpenCode / agents
+├── CLAUDE.md                    # 🧠 Entrypoint for Claude Code
 ├── .gitignore
 └── .cursor/
     └── rules/
-        ├── core-workflow.mdc            # Master workflow
-        ├── core-planning.mdc            # Project planning
-        ├── core-architecture.mdc        # Architecture decisions
-        ├── core-scaffolding.mdc         # Project scaffolding
-        ├── core-implementation.mdc      # Implementation strategy
-        ├── core-quality-gates.mdc       # Quality validation
-        ├── core-iteration.mdc           # Iterative refinement
-        ├── core-agent-orchestration.mdc # AI agent patterns
-        ├── core-devops.mdc              # CI/CD & infrastructure
-        ├── core-tech-stack.mdc          # Technology selection
-        ├── core-ux-design.mdc           # UX/UI design
-        ├── global-*.mdc                 # 10 global quality rules
-        └── specific-*.mdc              # 18 tech-specific rules
+        ├── core-workflow.mdc            # 🔄 Master workflow
+        ├── core-planning.mdc            # 📋 Project planning
+        ├── core-architecture.mdc        # 🏗️ Architecture decisions
+        ├── core-scaffolding.mdc         # 🏭 Project scaffolding
+        ├── core-implementation.mdc      # ⚡ Implementation strategy
+        ├── core-quality-gates.mdc       # ✅ Quality validation
+        ├── core-iteration.mdc           # 🔁 Iterative refinement
+        ├── core-agent-orchestration.mdc # 🤖 AI agent patterns
+        ├── core-devops.mdc              # 🚀 CI/CD & infrastructure
+        ├── core-tech-stack.mdc          # 🛠️ Technology selection
+        ├── core-ux-design.mdc           # 🎨 UX/UI design
+        ├── global-*.mdc                 # 🌍 10 global quality rules
+        └── specific-*.mdc              # 🔧 18 tech-specific rules
 ```
 
-## Contributing
+## 📝 License
+
+All the code is licensed under GPL v3.
+Feel free to modify and improve it! 😃
+
+## 🙌 Contributing
 
 1. Fork the repository.
 2. Create a feature branch: `feat/add-xyz-rule`.
 3. Add or modify rules following the existing format.
 4. Submit a PR with a description of the changes.
+
+💡 Ideas, suggestions, or bugs?
+Open an issue or submit a pull request!
+
+## 📬 Contact
+
+📧 contact@gaetandev.fr
+🌍 [Website](https://gaetandev.fr)
+💬 Discord: GaetanDev
+
+## 🎉 Thank you for using Bootstrap IA!
+
+If you have any questions or suggestions, let me know! 🚀😃
